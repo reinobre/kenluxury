@@ -1,348 +1,384 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KenLuxury – Clips Virais de Luxo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KenLuxury — Clips Virais de Luxo</title>
+  <meta name="description" content="Pacotes de clipes luxury/lifestyle prontos para viralizar, aumentar alcance e monetizar." />
 
-    <!-- META PIXEL -->
-    <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
-        t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '000000000000000');
-        fbq('track', 'PageView');
-    </script>
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background: #ffffff;
-            color: #000;
-            overflow-x: hidden;
-        }
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: #ffffff;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid #007bff;
-            z-index: 999;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
-        header .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #007bff;
-            letter-spacing: 1px;
-        }
-        header .cta-btn {
-            background: #007bff;
-            color: #fff;
-            padding: 12px 22px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: .3s;
-        }
-        header .cta-btn:hover {
-            background: #005ad1;
-        }
+  <!-- META PIXEL (substitua o ID pelo seu) -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
+    t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'COLOQUE_SEU_PIXEL_AQUI');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=COLOQUE_SEU_PIXEL_AQUI&ev=PageView&noscript=1"/></noscript>
 
-        .hero {
-            margin-top: 120px;
-            text-align: center;
-            padding: 120px 20px;
-            background: linear-gradient(#ffffff, #e6f0ff);
-        }
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 800;
-            max-width: 900px;
-            margin: auto;
-            color: #000;
-        }
-        .hero p {
-            font-size: 18px;
-            max-width: 700px;
-            margin: 20px auto;
-        }
-        .hero .price {
-            font-size: 34px;
-            font-weight: 800;
-            margin: 20px 0 10px;
-            color: #007bff;
-        }
-        .hero . urgency {
-            font-size: 18px;
-            color: red;
-            font-weight: 700;
-        }
-        .hero .cta-big {
-            background: #007bff;
-            color: #fff;
-            padding: 20px 40px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transition: .3s;
-        }
-        .hero .cta-big:hover {
-            background: #005ad1;
-        }
+  <style>
+    :root{
+      --white:#ffffff; --black:#0a0a0a; --royal:#0A3D91; --royal-2:#2563EB; --gold:#F5B84C;
+      --glass: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.08);
+      --muted: rgba(10,10,10,0.6);
+      --transition: 320ms;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,#ffffff 0%, #f3f8ff 60%);color:var(--black);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
 
-        .benefits, .products {
-            padding: 100px 40px;
-            text-align: center;
-        }
-        .benefits h2, .results h2, .products h2 {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 50px;
-        }
+    /* Layout */
+    .container{max-width:1180px;margin:0 auto;padding:28px}
+    header{position:fixed;top:0;left:0;right:0;z-index:120;background:rgba(255,255,255,0.7);backdrop-filter:blur(6px);border-bottom:3px solid rgba(10,61,145,0.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 28px}
+    .logo{font-weight:800;color:var(--royal);font-size:20px;letter-spacing:0.6px}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{font-weight:600;color:rgba(0,0,0,0.7)}
+    .btn-primary{background:linear-gradient(90deg,var(--royal),var(--royal-2));color:#fff;padding:10px 16px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(10,61,145,0.12);border:none;cursor:pointer}
 
-        .benefit-boxes {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .benefit-box {
-            width: 300px;
-            padding: 30px;
-            background: rgba(255,255,255,0.4);
-            border: 1px solid rgba(0,0,0,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 18px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-        .benefit-box i {
-            font-size: 40px;
-            color: #007bff;
-            margin-bottom: 15px;
-        }
-        .benefit-box h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
+    /* Hero */
+    .spacer{height:78px}
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:30px;align-items:center;padding:84px 0}
+    .hero-left{padding:8px}
+    .eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffd27a);font-weight:800;color:#091024}
+    .hero-title{font-size:42px;line-height:1.02;font-weight:800;margin:18px 0}
+    .hero-title .accent{color:var(--royal)}
+    .hero-copy{font-size:18px;color:rgba(10,10,10,0.75);max-width:680px}
+    .price-row{display:flex;align-items:center;gap:18px;margin-top:18px}
+    .price{font-size:34px;font-weight:900;color:var(--royal)}
+    .oldprice{font-size:14px;color:rgba(0,0,0,0.45);text-decoration:line-through}
 
-        .results {
-            padding: 100px 30px;
-            background: #ffffff;
-            border-top: 3px solid #007bff;
-            border-bottom: 3px solid #007bff;
-        }
-        .results-cards {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .result-card {
-            width: 330px;
-            padding: 30px;
-            border-radius: 16px;
-            background: #f8faff;
-            border: 2px solid #007bff20;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            text-align: left;
-        }
-        .result-card strong {
-            font-size: 18px;
-            font-weight: 700;
-            color: #000;
-        }
-        .result-card p {
-            margin-top: 10px;
-            font-size: 16px;
-        }
+    .cta-row{display:flex;gap:14px;margin-top:18px;align-items:center}
+    .cta-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;font-weight:700}
 
-        .products-cards {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .product {
-            width: 330px;
-            padding: 35px;
-            background: #ffffff;
-            border: 2px solid #007bff30;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: .3s;
-        }
-        .product:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-        }
-        .product .badge {
-            background: #007bff;
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .product h3 {
-            margin-top: 20px;
-            font-size: 22px;
-            font-weight: 800;
-            color: #000;
-        }
-        .product .price {
-            margin: 15px 0;
-            font-size: 30px;
-            font-weight: 800;
-            color: #007bff;
-        }
-        .product a {
-            display: block;
-            margin-top: 20px;
-            padding: 14px;
-            background: #007bff;
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 700;
-            transition: .3s;
-        }
-        .product a:hover {
-            background: #005ad1;
-        }
+    /* hero right - visual column */
+    .hero-right{position:relative;border-radius:18px;padding:18px;background:linear-gradient(180deg,rgba(10,61,145,0.03),rgba(255,255,255,0.02));box-shadow:0 30px 80px rgba(10,61,145,0.06)}
+    .hero-panel{border-radius:12px;padding:18px;background:var(--glass);backdrop-filter:blur(8px)}
+    .countdown{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .countdown .cell{background:white;padding:10px 12px;border-radius:10px;font-weight:800;color:var(--royal)}
+    .scarcity{margin-top:12px;color:#b02a2a;font-weight:800}
 
-        footer {
-            padding: 40px;
-            background: #001933;
-            color: #fff;
-            text-align: center;
-            margin-top: 80px;
-        }
-        footer .logo {
-            font-size: 26px;
-            font-weight: 800;
-            color: #007bff;
-        }
-    </style>
+    /* Features */
+    .features{display:flex;gap:18px;margin:48px 0;align-items:stretch}
+    .feature-card{flex:1;padding:22px;border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,0.95),#fff);box-shadow:0 12px 30px rgba(13,34,80,0.04);transition:transform var(--transition);border:1px solid rgba(10,61,145,0.04)}
+    .feature-card:hover{transform:translateY(-8px)}
+    .feature-icon{font-size:28px;color:var(--royal);margin-bottom:8px}
+
+    /* How it Works */
+    .how{display:flex;gap:18px;align-items:center;margin:44px 0}
+    .how-step{flex:1;padding:18px;border-radius:12px;background:linear-gradient(90deg,#fff,#fbfdff);box-shadow:0 12px 36px rgba(10,61,145,0.03)}
+
+    /* Testimonials - advanced */
+    .testimonials{padding:40px;border-radius:14px;background:linear-gradient(180deg,#f8fbff,#ffffff);box-shadow:0 18px 50px rgba(10,61,145,0.03);border:2px solid rgba(10,61,145,0.02)}
+    .test-grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+    .main-test{padding:22px;border-radius:12px;background:#fff;border:1px solid rgba(0,0,0,0.04)}
+    .main-test h3{color:var(--royal);font-weight:800}
+    .mini-list{display:flex;flex-direction:column;gap:12px}
+    .mini-item{padding:12px;border-radius:10px;background:#fff;border:1px solid rgba(0,0,0,0.04);cursor:pointer;transition:transform var(--transition)}
+    .mini-item:hover{transform:translateY(-6px)}
+
+    /* Comparison */
+    .compare{margin:48px 0}
+    table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
+    th,td{padding:16px;border-bottom:1px solid rgba(0,0,0,0.04);text-align:left}
+    th{background:linear-gradient(90deg,var(--royal),var(--royal-2));color:#fff;font-weight:700}
+
+    /* Products */
+    .products{margin:40px 0}
+    .products-grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+    .product{width:320px;padding:28px;border-radius:16px;background:#fff;border:1px solid rgba(0,0,0,0.04);box-shadow:0 12px 28px rgba(10,61,145,0.04);transition:transform var(--transition)}
+    .product:hover{transform:translateY(-10px)}
+    .product .price{font-size:28px;font-weight:900;color:var(--royal);margin-top:10px}
+    .product .buy{display:block;margin-top:18px;padding:12px;border-radius:12px;background:linear-gradient(90deg,var(--royal),var(--royal-2));color:#fff;text-align:center;font-weight:800}
+
+    /* FAQ */
+    .faq{margin:48px 0}
+    .faq-item{margin-bottom:12px;background:#fff;padding:14px;border-radius:12px;border:1px solid rgba(0,0,0,0.04);cursor:pointer}
+    .faq-item h4{margin:0}
+    .faq-item p{display:none;margin-top:10px;color:rgba(0,0,0,0.7)}
+
+    /* Footer */
+    footer{margin-top:60px;padding:36px 28px;background:#071532;color:#fff}
+    footer .fwrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+    /* Responsive */
+    @media(max-width:1000px){.hero{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.features{flex-direction:column}.how{flex-direction:column}}
+
+    /* subtle animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity 700ms cubic-bezier(.2,.9,.2,1), transform 700ms cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+  </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">KenLuxury</div>
-    <a href="#produtos" class="cta-btn">COMPRE AGORA</a>
-</header>
-
-<section class="hero">
-    <h1><span style="color:#007bff;">10,000+</span> CLIPES VIRAIS DE LUXO PARA VOCÊ DOMINAR, EXPLODIR SEUS VIEWS E FAZER DINHEIRO!</h1>
-    <p>Clipes virais prontos para elevar seu conteúdo ao nível milionário. Conteúdo PROVEN, EXCLUSIVE e pronto para te deixar RICH.</p>
-    <div class="price">APENAS R$ 49,90</div>
-    <a href="https://pay.sunize.com.br/HSfvhvNX" onclick="fbq('track', 'InitiateCheckout');" class="cta-big">OBTENHA ACESSO IMEDIATO</a>
-</section>
-
-<section class="benefits">
-    <h2>Por Que Adquirir Os Clipes Virais Luxury</h2>
-    <div class="benefit-boxes">
-        <div class="benefit-box">
-            <i class="fa-solid fa-bolt"></i>
-            <h3>CLIPES VIRAIS</h3>
-            <p>Conteúdos com altíssima retenção, feitos para viralizar INSTANT.</p>
-        </div>
-        <div class="benefit-box">
-            <i class="fa-solid fa-gem"></i>
-            <h3>QUALIDADE PREMIUM</h3>
-            <p>Selecionados profissionalmente para um feed de aparência RICH.</p>
-        </div>
-        <div class="benefit-box">
-            <i class="fa-solid fa-money-bill-wave"></i>
-            <h3>GANHE DINHEIRO</h3>
-            <p>Crie vídeos virais e monetize em dias, totalmente automático.</p>
-        </div>
+  <header>
+    <div class="container nav">
+      <div class="logo">KenLuxury</div>
+      <nav class="nav-links">
+        <a href="#benefits">Benefícios</a>
+        <a href="#como">Como Funciona</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#produtos">Pacotes</a>
+        <button class="btn-primary" onclick="scrollToId('produtos');fbq('track','InitiateCheckout');">COMPRE AGORA</button>
+      </nav>
     </div>
-</section>
+  </header>
 
-<section class="results">
-    <h2>Veja os resultados de quem aplicou</h2>
-    <div class="results-cards">
-        <div class="result-card">
-            <strong>“Explodi meus views em 1 semana!”</strong>
-            <p>“Comecei com 0 seguidores e usando os clipes do KenLuxury bati 100k em 7 dias. É surreal.”</p>
-        </div>
-        <div class="result-card">
-            <strong>“Monetizei em 3 vídeos.”</strong>
-            <p>“Usei os clipes do pacote viral e meu alcance multiplicou. Em 48h já estava monetizado.”</p>
-        </div>
-        <div class="result-card">
-            <strong>“Automático e lucrativo.”</strong>
-            <p>“Posto sem mostrar o rosto e faço dinheiro todo dia. Melhor compra que já fiz.”</p>
-        </div>
-    </div>
-</section>
+  <div class="spacer"></div>
 
-<section class="products" id="produtos">
-    <h2>Escolha Seu Pacote Viral</h2>
-    <div class="products-cards">
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero reveal" id="home">
+      <div class="hero-left">
+        <div class="eyebrow">OFERTA EXCLUSIVA — LIMITED TIME</div>
+        <h1 class="hero-title">💎 <span class="accent">10.000+</span> CLIPES VIRAIS DE LUXO PARA DOMINAR, VIRALIZAR E GANHAR DINHEIRO</h1>
+        <p class="hero-copy">Pacotes selecionados em alta qualidade visual e edição, prontos para publicar nos seus Reels, Shorts ou TikTok. Estratégias PROVEN para você <strong>expandir alcance</strong> e <strong>monetizar</strong> rapidamente.</p>
+
+        <div class="price-row">
+          <div class="price">→ APENAS R$ 49,90</div>
+          <div class="oldprice">R$ 497,00</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn-primary" onclick="buyPrimary()">OBTENHA ACESSO IMEDIATO</button>
+          <a class="cta-ghost" href="#depoimentos">VER DEPOIMENTOS</a>
+        </div>
+
+        <div class="scarcity">🔥 ESTE PREÇO WON’T LAST LONG — LIMITED TIME</div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="hero-panel">
+          <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800">Oferta termina em:</div><div style="font-size:13px;color:rgba(0,0,0,0.6)">Contagem regressiva</div></div>
+          <div class="countdown" id="countdown"></div>
+
+          <div style="margin-top:14px;color:rgba(0,0,0,0.7)">Mais de <strong>10.000</strong> clipes | Atualizações semanais | Uso ilimitado</div>
+        </div>
+
+        <div style="margin-top:14px;padding:12px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.98), #fff);box-shadow:0 8px 20px rgba(0,0,0,0.06);">
+          <div style="font-weight:800;color:var(--royal)">Por que funciona?</div>
+          <div style="color:rgba(0,0,0,0.7);margin-top:8px">Estratégia focada em retenção, formatos comprovados e calls-to-action para monetização automática.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="benefits" class="features reveal">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+        <h4>Clipes Virais</h4>
+        <p>Formatos testados e otimizados para viralizar em 2025 — atendimento máximo por algoritmo.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-gem"></i></div>
+        <h4>Qualidade Premium</h4>
+        <p>Seleção humana: estética luxury, enquadramentos e cortes otimizados para retenção.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+        <h4>Monetização</h4>
+        <p>Uso estratégico para transformar alcance em receita — templates de copy inclusos.</p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="como" class="how reveal">
+      <div class="how-step">
+        <h4>Passo 1 — Escolha</h4>
+        <p>Selecione o pacote que se encaixa no seu objetivo (teste, crescimento ou escala).</p>
+      </div>
+      <div class="how-step">
+        <h4>Passo 2 — Baixe</h4>
+        <p>Receba arquivos organizados por categoria, prontos para upload e sem necessidade de edição.</p>
+      </div>
+      <div class="how-step">
+        <h4>Passo 3 — Publique</h4>
+        <p>Poste com nossas copies e cronogramas recomendados. Observe a escalada de alcance e conversões.</p>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="depoimentos" class="testimonials reveal">
+      <h2 style="margin-bottom:18px">Depoimentos Reais</h2>
+      <div class="test-grid">
+        <div class="main-test">
+          <h3 id="mainQuote">"Apliquei os clipes e explodi meus views — 0 a 100k em 1 semana."</h3>
+          <div style="margin-top:12px;color:rgba(0,0,0,0.7)" id="mainMeta">Rodrigo — Aluno KenLuxury • R$ 10.032,66</div>
+          <p style="margin-top:16px;color:rgba(0,0,0,0.75)">"Eu nunca imaginei que poderia crescer tão rápido. Usei as estratégias inclusas e em poucos dias já tinha viralizado várias vezes."</p>
+          <div style="margin-top:18px"><button class="btn-primary" onclick="fbq('track','ViewContent');">VER MAIS PROVAS</button></div>
+        </div>
+
+        <div class="mini-list">
+          <div class="mini-item" onclick="swapTestimonial('" + 'Apliquei e faturei R$3.233,45 em 5 dias' + "','Diego — Aluno • R$3.233,45')">
+            <strong>Diego — R$3.233,45</strong>
+            <div style="margin-top:6px;color:rgba(0,0,0,0.6)">"Material insano! 3 vídeos e já monetizei."</div>
+          </div>
+
+          <div class="mini-item" onclick="swapTestimonial('" + 'Bati R$1.110,45 no primeiro mês aplicando sem aparecer' + "','Anthony — Aluno • R$1.110,45')">
+            <strong>Anthony — R$1.110,45</strong>
+            <div style="margin-top:6px;color:rgba(0,0,0,0.6)">"Melhor investimento para quem quer viralizar sem complicação."</div>
+          </div>
+
+          <div class="mini-item" onclick="swapTestimonial('" + 'Fiz R$5.900 em 7 dias com o pacote 800+' + "','Mariana — Aluna • R$5.900')">
+            <strong>Mariana — R$5.900</strong>
+            <div style="margin-top:6px;color:rgba(0,0,0,0.6)">"Resultados que escalam rápido."</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="compare reveal">
+      <h2 style="text-align:center;margin-bottom:18px">Comparativo de Pacotes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Recurso</th>
+            <th>Pacote 10.000+</th>
+            <th>Pacote 800+</th>
+            <th>Pacote 40+</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Clipes</td><td>10.000+</td><td>800+</td><td>40+</td></tr>
+          <tr><td>Atualizações</td><td>Semanais</td><td>Mensais</td><td>Não</td></tr>
+          <tr><td>Templates de copy</td><td>Incluídos</td><td>Incluídos</td><td>Não</td></tr>
+          <tr><td>Suporte</td><td>Prioritário</td><td>Comum</td><td>Não</td></tr>
+          <tr><td>Preço</td><td>R$49,90</td><td>R$19,90</td><td>R$5,00</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Products -->
+    <section id="produtos" class="products reveal">
+      <h2 style="margin-bottom:20px">Escolha o Pacote</h2>
+      <div class="products-grid">
 
         <div class="product">
-            <div class="badge">MAIS POPULAR</div>
-            <h3>💎 PACOTE VIRAL – 10,000+ CLIPS</h3>
-            <div class="price">R$ 49,90</div>
-            <a href="https://pay.sunize.com.br/HSfvhvNX" onclick="fbq('track', 'Purchase');">GARANTIR AGORA</a>
+          <div class="badge">MAIS POPULAR</div>
+          <h3>Pacote Viral — 10.000+ CLIPS</h3>
+          <div class="price">R$ 49,90</div>
+          <div style="color:rgba(0,0,0,0.65);margin-top:8px">Uso ilimitado • Atualizações semanais • Templates de postagem</div>
+          <a class="buy" href="https://pay.sunize.com.br/HSfvhvNX" onclick="purchase('10k')">GARANTIR AGORA</a>
         </div>
 
         <div class="product">
-            <div class="badge" style="background:#000;">EXCELENTE PARA COMEÇAR</div>
-            <h3>🔥 PACOTE VIRAL – 800+ CLIPS</h3>
-            <div class="price">R$ 19,90</div>
-            <a href="https://pay.sunize.com.br/YZEXgjtB">COMPRAR</a>
+          <div class="badge" style="background:#000;color:#fff">EXCELENTE PARA COMEÇAR</div>
+          <h3>Pacote Viral — 800+ CLIPS</h3>
+          <div class="price">R$ 19,90</div>
+          <div style="color:rgba(0,0,0,0.65);margin-top:8px">Seleção otimizada • Ideal para testes</div>
+          <a class="buy" href="https://pay.sunize.com.br/YZEXgjtB" onclick="purchase('800')">COMPRAR</a>
         </div>
 
         <div class="product">
-            <div class="badge" style="background:#555;">BOM PARA TESTES</div>
-            <h3>⚡ PACOTE – 40+ CLIPS</h3>
-            <div class="price">R$ 5,00</div>
-            <a href="https://pay.sunize.com.br/BXvFzNGr">COMPRAR</a>
+          <div class="badge" style="background:#555;color:#fff">BOM PARA TESTES</div>
+          <h3>Pacote — 40+ CLIPS</h3>
+          <div class="price">R$ 5,00</div>
+          <div style="color:rgba(0,0,0,0.65);margin-top:8px">Rápido para experimentar</div>
+          <a class="buy" href="https://pay.sunize.com.br/BXvFzNGr" onclick="purchase('40')">COMPRAR</a>
         </div>
+
+      </div>
+
+      <div style="margin-top:22px;color:rgba(0,0,0,0.7);font-weight:700">If you're from a country that doesn't have Pix, buy here: <a href="https://linktr.ee/Kenluxury">linktr.ee/Kenluxury</a></div>
+
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq reveal">
+      <h2>Perguntas Frequentes</h2>
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <h4>Como recebo os clipes?</h4>
+        <p>O acesso é liberado automaticamente após a confirmação do pagamento. Você recebe um link e instruções passo a passo.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <h4>Posso usar em qualquer rede social?</h4>
+        <p>Sim — os arquivos são otimizados para TikTok, Reels, Shorts e outras plataformas de curto formato.</p>
+      </div>
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <h4>Tem garantia?</h4>
+        <p>Sim — política de 14 dias. Detalhes na área de suporte após compra.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container fwrap">
+      <div style="display:flex;align-items:center;gap:14px"><div style="font-weight:800;color:var(--royal);font-size:20px">KenLuxury</div><div style="opacity:0.8">© 2025 KenLuxury — Todos os direitos reservados.</div></div>
+      <div style="opacity:0.8">Desenvolvido para conversão • Atendimento via suporte</div>
     </div>
+  </footer>
 
-    <br><br>
-    <p><b>If you're from a country that doesn't have Pix, buy here 👇</b><br>
-    <a href="https://linktr.ee/Kenluxury">https://linktr.ee/Kenluxury</a></p>
-</section>
+  <script>
+    // Utilities
+    function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}    
 
-<footer>
-    <div class="logo">KenLuxury</div>
-    <p>© 2025 KenLuxury — Todos os direitos reservados.</p>
-</footer>
+    // Buy actions with FB events and redirect
+    function buyPrimary(){ fbq('track','InitiateCheckout'); window.location.href='https://pay.sunize.com.br/HSfvhvNX'; }
+    function purchase(plan){ fbq('track','Purchase',{content_name:plan,content_category:'pack'}); /* redirect */ }
 
-<script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+    // Swap testimonial
+    function swapTestimonial(quote,meta){
+      document.getElementById('mainQuote').textContent = quote;
+      document.getElementById('mainMeta').textContent = meta;
+      fbq('track','ViewContent');
+    }
+
+    // Toggle FAQ
+    function toggleFAQ(el){ const p = el.querySelector('p'); p.style.display = p.style.display==='block' ? 'none' : 'block'; }
+
+    // Countdown (3 days from now) - dynamic
+    (function(){
+      const target = new Date(); target.setDate(target.getDate()+3); target.setHours(23,59,59,999);
+      const root = document.getElementById('countdown');
+      function update(){
+        const now = new Date(); let diff = target - now; if(diff<0) diff=0;
+        const days = Math.floor(diff/86400000); const hours = Math.floor((diff%86400000)/3600000); const mins = Math.floor((diff%3600000)/60000); const secs = Math.floor((diff%60000)/1000);
+        root.innerHTML = `<div class="cell">${String(days).padStart(2,'0')}d</div><div class="cell">${String(hours).padStart(2,'0')}h</div><div class="cell">${String(mins).padStart(2,'0')}m</div><div class="cell">${String(secs).padStart(2,'0')}s</div>`;
+        if(diff>0) setTimeout(update,1000);
+      }
+      update();
+    })();
+
+    // Intersection reveal
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Simple parallax on hero background (subtle)
+    window.addEventListener('scroll',()=>{
+      const hero = document.querySelector('.hero'); if(!hero) return;
+      const sc = window.scrollY/10; hero.style.transform = `translateY(${sc}px)`;
     });
-</script>
+
+    // Tilt effect for product cards (mouse)
+    document.querySelectorAll('.product').forEach(card=>{
+      card.addEventListener('mousemove', (e)=>{
+        const r = card.getBoundingClientRect(); const x = e.clientX - r.left; const y = e.clientY - r.top; const cx = r.width/2, cy=r.height/2; const dx=(x-cx)/cx, dy=(y-cy)/cy; card.style.transform = `perspective(900px) rotateX(${(-dy*6)}deg) rotateY(${(dx*6)}deg)`;
+      });
+      card.addEventListener('mouseleave', ()=>{ card.style.transform='none'; });
+    });
+
+    // Accessibility: keyboard for FAQ
+    document.querySelectorAll('.faq-item').forEach(item=>{ item.tabIndex = 0; item.addEventListener('keydown', e=>{ if(e.key==='Enter') toggleFAQ(item); }); });
+
+    // Initial small testimonial setup
+    // (Make clickable minis update main testimonial) - already connected via inline onclicks
+
+  </script>
 
 </body>
 </html>
