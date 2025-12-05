@@ -1,12 +1,13 @@
 <!--
-  Kenluxury - Single-file landing page
-  Files: index.html (this file contains HTML, CSS, JS)
-  Instructions:
-   - Replace placeholder images in the "assets" section with your real images.
-   - Replace payment links where indicated.
-   - To host: upload this file to any static hosting (Netlify, Vercel, GitHub Pages, Surge, etc.)
+  Kenluxury - Landing page (improved)
+  Single file: index.html (contains HTML, CSS, JS)
+  Improvements: Full redesign of the TESTIMONIALS section with interactive carousel, large proof cards, modal screenshot viewer,
+  sticky proof bar, improved visuals, enhanced animations, accessibility and mobile-first layout.
 
-  NOTE: This is a production-ready starter. Tweak copy/images/links and test on mobile.
+  Instructions:
+   - Replace placeholder screenshot URLs with the real screenshots you provided.
+   - Replace payment links where indicated.
+   - Host as a static file on Netlify / Vercel / GitHub Pages / Surge.
 -->
 
 <!doctype html>
@@ -23,121 +24,114 @@
   <script src="https://kit.fontawesome.com/a2d9b3f6b6.js" crossorigin="anonymous"></script>
 
   <style>
-    /* ========== RESET & BASE ========== */
     :root{
       --royal-blue:#0A3D91;
+      --hover-blue:#2a5cf7;
       --gold:#F5B84C;
-      --bg:#070709;
-      --muted:#e6eefc;
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.04);
-      --transition: 0.3s;
-      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --bg:#05060a;
+      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --glass: rgba(255,255,255,0.04);
+      --muted:rgba(255,255,255,0.65);
+      --transition:0.32s;
+      font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:linear-gradient(180deg,#05060a 0%, #0a0a0f 100%);color:#fff;-webkit-font-smoothing:antialiased;}
-    a{color:inherit;text-decoration:none}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% 5%, rgba(10,61,145,0.06), transparent), linear-gradient(180deg,#02030a 0%, #07080f 100%);color:#fff;-webkit-font-smoothing:antialiased}
+    a{color:inherit}
     img{max-width:100%;display:block}
 
-    /* ========== CONTAINER ========== */
-    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .container{max-width:1150px;margin:0 auto;padding:20px}
 
-    /* ========== HEADER ========== */
-    header{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);box-shadow:0 4px 18px rgba(0,0,0,0.6);border-bottom:2px solid rgba(10,61,145,0.08)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--royal-blue);font-size:20px}
-    .logo svg{height:28px}
-    .nav-links{display:flex;gap:18px;align-items:center}
-    .nav-links a{font-weight:600;font-size:14px;color:rgba(255,255,255,0.85)}
-    .cta-buy{background:linear-gradient(90deg,var(--royal-blue),#2a5cf7);padding:10px 16px;border-radius:10px;color:#fff;font-weight:700;box-shadow:0 8px 30px rgba(10,61,145,0.2);transition:transform var(--transition)}
-    .cta-buy:hover{transform:translateY(-3px)}
+    /* Header */
+    header{position:fixed;left:0;right:0;top:0;z-index:120;background:rgba(6,6,8,0.42);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--royal-blue);font-size:20px}
+    .cta-buy{background:linear-gradient(90deg,var(--royal-blue),var(--hover-blue));padding:10px 16px;border-radius:12px;color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(10,61,145,0.18);transition:transform var(--transition)}
+    .cta-buy:hover{transform:translateY(-4px)}
 
-    /* sticky top offset spacer for content */
-    .spacer{height:74px}
+    .spacer{height:72px}
 
-    /* ========== HERO ========== */
-    .hero{display:grid;grid-template-columns:1fr 460px;gap:28px;align-items:center;padding:60px 0}
-    .hero-left{padding:28px}
-    .eyebrow{display:inline-block; background:linear-gradient(90deg,var(--gold),#ffd27a);padding:6px 12px;border-radius:20px;color:#111;font-weight:700;margin-bottom:18px}
-    .title{font-size:34px;line-height:1.02;font-weight:800;margin:0 0 14px;color:linear-gradient(90deg,var(--gold),#fff)}
-    .title .highlight{background:linear-gradient(90deg,var(--gold),#ffd27a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{margin:14px 0;font-size:16px;color:rgba(255,255,255,0.86);max-width:520px}
-    .price-box{display:flex;align-items:center;gap:18px;margin-top:18px}
-    .price{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--gold),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .price-small{font-size:14px;color:rgba(255,255,255,0.7)}
-    .hero-cta{display:flex;gap:12px;margin-top:16px}
-    .btn-primary{background:linear-gradient(90deg,var(--royal-blue),#2a5cf7);padding:14px 18px;border-radius:12px;font-weight:800;border:none;color:#fff;cursor:pointer;box-shadow:0 14px 40px rgba(10,61,145,0.16);transition:transform var(--transition)}
-    .btn-primary:hover{transform:translateY(-4px)}
-    .btn-ghost{padding:12px 16px;border-radius:10px;border:1px solid rgba(255,255,255,0.08);background:transparent;font-weight:700}
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:48px 0}
+    .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffd27a);color:#081124;font-weight:800}
+    .title{font-size:36px;line-height:1.02;margin:14px 0;font-weight:800}
+    .title .gold{background:linear-gradient(90deg,var(--gold),#ffd27a);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);max-width:560px;margin-bottom:18px}
+    .hero-ctas{display:flex;gap:12px;align-items:center}
 
-    /* hero right mockup */
-    .mockup{background:linear-gradient(180deg, rgba(10,61,145,0.08), rgba(0,0,0,0.0));border-radius:20px;padding:18px;box-shadow:0 10px 40px rgba(0,0,0,0.6);}
-    .mockup .screen{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:16px;padding:10px}
-    .mockup img{border-radius:12px}
+    .price-pill{display:inline-flex;align-items:baseline;gap:10px;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:12px;font-weight:800}
+    .price-pill .price{font-size:22px;color:var(--gold)}
 
-    /* ========== FEATURES ========== */
-    .features{display:flex;gap:18px;margin:40px 0}
-    .feature-card{flex:1;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1px rgba(255,255,255,0.02);transition:transform var(--transition)}
-    .feature-card:hover{transform:translateY(-8px)}
-    .feature-card h4{margin:6px 0 10px}
+    .mockup{border-radius:18px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 60px rgba(5,8,20,0.7)}
 
-    /* ========== TESTIMONIALS ========== */
-    .testimonials{background:#fff;border-radius:16px;padding:18px;color:#000;margin:40px 0;border:1px solid rgba(10,61,145,0.06)}
-    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .test-card{background:var(--glass-2);padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
-    .screenshot{border-radius:8px;border:1px solid rgba(0,0,0,0.06);overflow:hidden}
-    .test-meta{display:flex;align-items:center;gap:10px}
-    .test-meta .name{font-weight:700}
-    .stat{font-weight:800;color:var(--royal-blue)}
+    /* sticky proof bar */
+    .proof-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:linear-gradient(90deg, rgba(10,61,145,0.06), rgba(255,255,255,0.02));padding:10px 16px;border-radius:999px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 50px rgba(0,0,0,0.6);z-index:130}
+    .proof-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 6px 18px rgba(245,184,76,0.18)}
 
-    /* ========== PACKAGES ========== */
-    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0}
-    .pkg{padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.04);transition:transform var(--transition)}
-    .pkg:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(0,0,0,0.6)}
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;background:linear-gradient(90deg,var(--gold),#ffd27a);color:#111}
-    .price-big{font-size:22px;font-weight:800;margin-top:8px}
+    /* FEATURES */
+    .features{display:flex;gap:18px;margin:28px 0}
+    .feature{flex:1;padding:18px;border-radius:12px;background:var(--card-bg);backdrop-filter:blur(6px);transition:transform var(--transition)}
+    .feature:hover{transform:translateY(-8px)}
 
-    /* intl notice */
-    .intl{margin-top:12px;padding:12px;background:linear-gradient(90deg,rgba(245,184,76,0.08),rgba(255,255,255,0.02));border-radius:10px;color:var(--gold);font-weight:700}
+    /* TESTIMONIALS - redesigned */
+    .testimonials-wrap{margin:36px 0;background:linear-gradient(180deg,#ffffff 0%, #f7f9ff 100%);color:#03102a;border-radius:18px;padding:22px;border:1px solid rgba(10,61,145,0.06)}
+    .test-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .test-head h3{margin:0}
+    .test-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start}
 
-    /* FOOTER */
-    footer{margin-top:48px;padding:30px 18px;background:linear-gradient(180deg,#07132a 0%, #020814 100%);border-top:1px solid rgba(255,255,255,0.02)}
-    footer .fwrap{display:flex;align-items:center;justify-content:space-between;gap:18px}
+    /* main testimonial hero card */
+    .main-test{background:linear-gradient(180deg, rgba(10,61,145,0.03), rgba(255,255,255,0.02));border-radius:14px;padding:18px;position:relative;overflow:hidden}
+    .main-test .quote{font-size:20px;font-weight:800;color:#051031;margin-bottom:8px}
+    .main-test .meta{display:flex;align-items:center;gap:10px}
+    .main-test .meta .name{font-weight:800}
+    .main-test .stat{font-size:20px;font-weight:900;color:var(--royal-blue)}
+    .main-test .screenshot{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
 
-    /* RESPONSIVE */
-    @media(max-width:1024px){.hero{grid-template-columns:1fr 360px}.test-grid{grid-template-columns:repeat(2,1fr)}.packages{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:720px){.nav-links{display:none}.hero{grid-template-columns:1fr;gap:18px}.mockup{order:-1}.test-grid{grid-template-columns:1fr}.packages{grid-template-columns:1fr}.container{padding:18px}}
+    /* side smaller cards / carousel */
+    .side-list{display:flex;flex-direction:column;gap:12px}
+    .mini-card{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;background:#fff;border:1px solid rgba(10,61,145,0.04);cursor:pointer;transition:transform var(--transition)}
+    .mini-card:hover{transform:translateY(-6px)}
+    .mini-card img{width:84px;height:64px;object-fit:cover;border-radius:8px}
+    .mini-card .txt{font-size:13px;color:#05102a}
+    .slider-controls{display:flex;gap:8px;align-items:center}
 
-    /* small helper */
-    .muted{color:rgba(255,255,255,0.65)}
+    /* PACKAGES */
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    .pkg{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);transition:transform var(--transition)}
+    .pkg:hover{transform:translateY(-10px)}
+
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffd27a);color:#07102a;font-weight:800}
+
+    .intl{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(245,184,76,0.06), rgba(255,255,255,0.01));color:var(--gold);font-weight:700}
+
+    /* footer */
+    footer{margin-top:40px;padding:28px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between}
+
+    /* modal viewer */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.76);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.28s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .box{max-width:920px;width:100%;border-radius:12px;overflow:hidden}
+    .modal img{width:100%;height:auto;display:block}
+
+    /* responsive */
+    @media(max-width:1024px){.hero{grid-template-columns:1fr 380px}.test-grid{grid-template-columns:1fr 320px}.packages{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.nav .nav-links{display:none}.hero{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.packages{grid-template-columns:1fr}.proof-bar{display:none}}
+
   </style>
 </head>
 <body>
 
   <header>
     <div class="container nav">
-      <div class="logo">
-        <!-- Simple SVG monogram -->
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#g)" />
-          <defs>
-            <linearGradient id="g" x1="0" x2="1">
-              <stop offset="0" stop-color="#0A3D91" />
-              <stop offset="1" stop-color="#2a5cf7" />
-            </linearGradient>
-          </defs>
-        </svg>
-        Kenluxury
-      </div>
-
-      <nav class="nav-links">
-        <a href="#benefits">Benefícios</a>
-        <a href="#testimonials">Depoimentos</a>
-        <a href="#packages">Pacotes</a>
-        <a href="#faq">FAQ</a>
+      <div class="logo"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="6" fill="url(#g)"/></svg>Kenluxury</div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <nav class="nav-links" style="display:flex;gap:12px">
+          <a href="#benefits">Benefícios</a>
+          <a href="#testimonials">Depoimentos</a>
+          <a href="#packages">Pacotes</a>
+        </nav>
         <a class="cta-buy" href="#packages">COMPRE AGORA</a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -146,213 +140,200 @@
   <main class="container">
 
     <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-left">
-        <div class="eyebrow">OFERTA POR TEMPO LIMITADO</div>
-        <h1 class="title">💎 <span class="highlight">10.000+</span> CLIPS VIRAIS DE LUXO PARA VOCÊ GANHAR MUITO DINHEIRO</h1>
-        <p class="lead">Domine o mercado com clipes viral luxury/lifestyle prontos para explodir seu alcance e fazer você ganhar dinheiro rápido. Conteúdo profissional, pronto para postar, pensado para performance e monetização imediata.</p>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">LIMITED TIME — ACT NOW</div>
+        <h1 class="title">💎 <span class="gold">10.000+</span> CLIPS VIRAIS DE LUXO PARA VOCÊ <span style="color:var(--gold)">MAKE MONEY</span></h1>
+        <p class="lead">Domine o mercado com clipes luxury/lifestyle otimizados para retenção e viralização. Conteúdo pronto, estratégia comprovada e resultados rápidos — PROVEN, INSTANT, EXCLUSIVE.</p>
 
-        <div class="price-box">
-          <div>
-            <div class="price">→ APENAS R$ 49,90</div>
-            <div class="price-small">Preço promocional — <s style="opacity:0.6">R$ 497,00</s></div>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
+          <div class="price-pill"><div class="price">APENAS R$ 49,90</div><div style="font-size:12px;color:var(--muted);margin-left:8px">Preço promocional — <s style="opacity:0.6">R$ 497,00</s></div></div>
+          <div class="hero-ctas">
+            <a class="cta-buy" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank" rel="noopener">OBTENHA ACESSO IMEDIATO</a>
+            <a class="btn-ghost" href="#packages" style="padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);font-weight:700">VER PACOTES</a>
           </div>
         </div>
 
-        <div class="hero-cta">
-          <a class="btn-primary" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank" rel="noopener">OBTENHA ACESSO IMEDIATO AGORA!</a>
-          <a class="btn-ghost" href="#packages">VER PACOTES</a>
-        </div>
-
-        <div style="margin-top:12px" class="muted">🔥 <strong>ESTE PREÇO NÃO DURARÁ MUITO TEMPO!</strong></div>
-
+        <div style="margin-top:12px;color:var(--gold);font-weight:800">🔥 ESTE PREÇO WON’T LAST LONG — LIMITED TIME</div>
       </div>
 
       <aside class="mockup" aria-hidden="true">
-        <div class="screen">
-          <!-- placeholder mockup image: replace with high-quality mockup or screenshot -->
-          <img src="https://images.unsplash.com/photo-1520975911256-8a6d5a6a8a2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Mockup de exemplo"/>
-        </div>
+        <img src="https://images.unsplash.com/photo-1506619216599-9d16d0905df7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Mockup Kenluxury">
       </aside>
     </section>
 
     <!-- FEATURES -->
-    <section id="benefits">
+    <section id="benefits" style="margin-top:28px">
       <div class="features">
-        <div class="feature-card">
-          <h4>⚡ CLIPES VIRAIS</h4>
-          <p>Impacto comprovado — conteúdo pronto que performa. Use em Reels, Shorts e TikTok com resultados INSTANT.</p>
-        </div>
-        <div class="feature-card">
-          <h4>💎 QUALIDADE PREMIUM</h4>
-          <p>Clipes selecionados profissionalmente, estilo luxury, edição otimizada para retenção e performance.</p>
-        </div>
-        <div class="feature-card">
-          <h4>💰 GANHE MUITO DINHEIRO</h4>
-          <p>Estratégias PROVEN para monetizar com conteúdo — aumente views e faturamento diariamente.</p>
-        </div>
+        <div class="feature"><h4>⚡ CLIPES VIRAIS</h4><p>Conteúdo testado para alto engajamento. RESULTADOS INSTANT.</p></div>
+        <div class="feature"><h4>💎 QUALIDADE PREMIUM</h4><p>Imagens, cortes e edição no padrão luxury — prontos para bombar.</p></div>
+        <div class="feature"><h4>💰 GANHE MUITO DINHEIRO</h4><p>Modelos PROVEN para transformar views em receita — MAKE MONEY diariamente.</p></div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="testimonials">
-      <h3>Veja Os Resultados De Quem Aplicou</h3>
-      <p class="muted">Resultados reais enviados por alunos — integre esses elementos visuais nos seus anúncios e páginas.</p>
-
-      <div class="test-grid" style="margin-top:12px">
-        <!-- NOTE: replace the src with real screenshots provided by user -->
-        <div class="test-card">
-          <div class="screenshot"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Depoimento Rodrigo - R$10.032,66"></div>
-          <div class="test-meta"><div class="name">Rodrigo Aluno</div><div class="stat">R$ 10.032,66</div></div>
-          <div class="muted">"Irmao eu consegui — Não consigo acreditar mano, sempre sonhei com isso."</div>
+    <!-- TESTIMONIALS (MAJOR UPGRADE) -->
+    <section id="testimonials" class="testimonials-wrap">
+      <div class="test-head">
+        <div>
+          <h3>Veja Os Resultados De Quem Aplicou</h3>
+          <div style="color:rgba(3,16,42,0.7);margin-top:6px">Depoimentos reais com números e screenshots — inspiração visual e prova social para converter.</div>
         </div>
-
-        <div class="test-card">
-          <div class="screenshot"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Depoimento Diego - R$3.233,45"></div>
-          <div class="test-meta"><div class="name">Diego Novais (Aluno)</div><div class="stat">R$ 3.233,45</div></div>
-          <div class="muted">"Men que conhecimento foda que voce passa!! É de longe a melhor estrutura desse mercado."</div>
-        </div>
-
-        <div class="test-card">
-          <div class="screenshot"><img src="https://images.unsplash.com/photo-1517817748493-1f9a7a6a2f43?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Depoimento Anthony - R$1.110,45"></div>
-          <div class="test-meta"><div class="name">Anthony RD (Aluno ASD)</div><div class="stat">R$ 1.110,45</div></div>
-          <div class="muted">"Bati meus primeiros mil reais no mês, sou grato demais por tudo que voce fez."</div>
+        <div class="slider-controls">
+          <div style="color:rgba(3,16,42,0.7);font-weight:700">Mais de <span style="color:var(--royal-blue)">10.032,66</span> em vendas comprovadas</div>
         </div>
       </div>
+
+      <div class="test-grid" style="margin-top:18px">
+        <!-- Main highlight testimonial -->
+        <div class="main-test" id="mainTest">
+          <div class="quote">"Irmao eu consegui — Não consigo acreditar mano, sempre sonhei com isso."</div>
+          <div class="meta"><div class="name">Rodrigo — <span style="font-weight:700;color:var(--muted)">Aluno Kenluxury</span></div><div style="margin-left:auto" class="stat">R$ 10.032,66</div></div>
+          <div class="screenshot" style="margin-top:12px">
+            <!-- Replace this src with your actual screenshot image provided -->
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Screenshot Rodrigo - R$10.032,66">
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+            <button class="cta-buy" id="openModalMain">VER PRINT</button>
+            <div style="font-size:13px;color:rgba(3,16,42,0.7)">Prova visual com vendas e conversões.</div>
+          </div>
+        </div>
+
+        <!-- Right side mini cards (list / carousel) -->
+        <div class="side-list" id="miniList">
+          <!-- Mini 1 -->
+          <div class="mini-card" data-src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Diego — R$3.233,45">
+            <div class="txt"><div style="font-weight:800">Diego Novais (Aluno)</div><div style="font-size:13px;color:#05102a">R$ 3.233,45 • 248 vendas</div></div>
+          </div>
+
+          <!-- Mini 2 -->
+          <div class="mini-card" data-src="https://images.unsplash.com/photo-1517817748493-1f9a7a6a2f43?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+            <img src="https://images.unsplash.com/photo-1517817748493-1f9a7a6a2f43?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Anthony — R$1.110,45">
+            <div class="txt"><div style="font-weight:800">Anthony RD (Aluno ASD)</div><div style="font-size:13px;color:#05102a">R$ 1.110,45 • Primeira conquista</div></div>
+          </div>
+
+          <!-- Mini 3 (mock) -->
+          <div class="mini-card" data-src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Outro Aluno">
+            <div class="txt"><div style="font-weight:800">Diego M.</div><div style="font-size:13px;color:#05102a">3k em menos de 30 dias</div></div>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
     <!-- PACKAGES -->
     <section id="packages">
-      <h3 style="margin-top:22px">Escolha o seu pacote de Clipes Virais</h3>
+      <h3 style="margin-top:20px">Escolha o seu pacote de Clipes Virais</h3>
       <div class="packages">
 
         <div class="pkg">
           <div class="badge">MAIS POPULAR</div>
           <h4 style="margin-top:12px">💎 PACOTE VIRAL – 10.000+ CLIPS</h4>
-          <div class="price-big">R$ 49,90</div>
-          <ul style="margin-top:10px;color:rgba(255,255,255,0.8);list-style:disc;padding-left:18px">
-            <li>Conteúdo pronto, categorias variadas</li>
-            <li>Atualizações periódicas</li>
-            <li>Uso ilimitado para suas contas</li>
+          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 49,90</div>
+          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
+            <li>10.000+ clipes premium prontos para publicar</li>
+            <li>Atualizações semanais + categorias exclusivas</li>
+            <li>Templates de copy e ideias de postagem</li>
           </ul>
-          <div style="margin-top:12px"><a class="btn-primary" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank" rel="noopener">GARANTIR AGORA</a></div>
-          <div class="muted" style="margin-top:10px">Garantia: 14 dias</div>
+          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank">GARANTIR AGORA</a></div>
         </div>
 
         <div class="pkg">
           <div class="badge">EXCELENTE PARA COMEÇAR</div>
           <h4 style="margin-top:12px">🔥 PACOTE VIRAL – 800+ CLIPS</h4>
-          <div class="price-big">R$ 19,90</div>
-          <ul style="margin-top:10px;color:rgba(255,255,255,0.8);list-style:disc;padding-left:18px">
-            <li>Seleção de clips para teste</li>
-            <li>Arquivos prontos para postar</li>
+          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 19,90</div>
+          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
+            <li>Seleção otimizada para testes</li>
+            <li>Foco em formatos curtos e virais</li>
           </ul>
-          <div style="margin-top:12px"><a class="btn-primary" href="https://pay.sunize.com.br/YZEXgjtB" target="_blank" rel="noopener">GARANTIR AGORA</a></div>
+          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/YZEXgjtB" target="_blank">GARANTIR AGORA</a></div>
         </div>
 
         <div class="pkg">
           <div class="badge">BOM PARA TESTES</div>
           <h4 style="margin-top:12px">⚡ PACOTE DE INÍCIO – 40+ CLIPS</h4>
-          <div class="price-big">R$ 5,00</div>
-          <ul style="margin-top:10px;color:rgba(255,255,255,0.8);list-style:disc;padding-left:18px">
-            <li>Pacote rápido de experimentação</li>
-            <li>Ideal para testar nas suas contas</li>
+          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 5,00</div>
+          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
+            <li>Pacote pequeno para experimentação</li>
+            <li>Ideal para quem quer testar estratégias</li>
           </ul>
-          <div style="margin-top:12px"><a class="btn-primary" href="https://pay.sunize.com.br/BXvFzNGr" target="_blank" rel="noopener">GARANTIR AGORA</a></div>
+          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/BXvFzNGr" target="_blank">GARANTIR AGORA</a></div>
         </div>
-
       </div>
 
-      <div class="intl">
-        If you're from a country that doesn't have Pix, buy here. 👇<br>
-        https://linktr.ee/Kenluxury
-      </div>
-
+      <div class="intl">If you're from a country that doesn't have Pix, buy here. 👇<br>https://linktr.ee/Kenluxury</div>
     </section>
 
     <!-- HOW IT WORKS -->
-    <section style="margin-top:28px">
+    <section style="margin-top:24px">
       <h3>Como funciona (3 passos)</h3>
-      <div style="display:flex;gap:14px;margin-top:12px;flex-wrap:wrap">
-        <div style="flex:1;min-width:220px;padding:14px;background:var(--glass);border-radius:12px">1. Escolha o pacote</div>
-        <div style="flex:1;min-width:220px;padding:14px;background:var(--glass);border-radius:12px">2. Baixe os clipes</div>
-        <div style="flex:1;min-width:220px;padding:14px;background:var(--glass);border-radius:12px">3. Publique e monetize — EXPLODE YOUR VIEWS</div>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">1. Escolha o pacote</div>
+        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">2. Baixe os clipes</div>
+        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">3. Publique e monetize — EXPLODE YOUR VIEWS</div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" style="margin-top:28px">
+    <section id="faq" style="margin-top:24px">
       <h3>FAQ</h3>
-      <div style="margin-top:12px">
-        <details style="background:var(--glass);padding:12px;border-radius:10px;margin-bottom:8px"><summary style="font-weight:700">Os clipes são licenciados?</summary><div style="margin-top:8px;color:rgba(255,255,255,0.85)">Você recebe direito de uso comercial para postar e monetizar. Consulte a política completa na seção de termos.</div></details>
-        <details style="background:var(--glass);padding:12px;border-radius:10px;margin-bottom:8px"><summary style="font-weight:700">Formas de pagamento?</summary><div style="margin-top:8px;color:rgba(255,255,255,0.85)">Pix (Brasil) e links internacionais via Linktree. Se não tiver Pix, use o link em inglês na seção de pacotes.</div></details>
-      </div>
+      <details style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:10px"><summary style="font-weight:800">Os clipes são licenciados?</summary><div style="margin-top:8px;color:var(--muted)">Você recebe direito de uso comercial para postar e monetizar. Consulte a política completa na seção de termos.</div></details>
+      <details style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:10px"><summary style="font-weight:800">Formas de pagamento?</summary><div style="margin-top:8px;color:var(--muted)">Pix (Brasil) e links internacionais via Linktree. Se não tiver Pix, use o link em inglês na seção de pacotes.</div></details>
     </section>
 
     <!-- FOOTER -->
     <footer>
-      <div class="container fwrap">
-        <div style="display:flex;align-items:center;gap:12px">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" style="filter:drop-shadow(0 6px 16px rgba(10,61,145,0.18))">
-            <rect x="1" y="1" width="22" height="22" rx="6" fill="#0A3D91" />
-          </svg>
-          <div>
-            <div style="font-weight:800">Kenluxury</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.65)">© 2025 Kenluxury — Todos os direitos reservados.</div>
-          </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="6" fill="#0A3D91"/></svg>
+        <div>
+          <div style="font-weight:800">Kenluxury</div>
+          <div style="font-size:13px;color:var(--muted)">© 2025 Kenluxury — Todos os direitos reservados.</div>
         </div>
-        <div class="muted">Desenvolvido com foco em conversão • <a href="#packages">Comprar agora</a></div>
       </div>
+      <div style="color:var(--muted)">Desenvolvido para conversão • <a href="#packages">Comprar agora</a></div>
     </footer>
 
   </main>
 
+  <!-- sticky proof bar -->
+  <div class="proof-bar" role="status" aria-live="polite">
+    <div class="dot" aria-hidden="true"></div>
+    <div style="font-weight:800">Alunos comprovados • Resultados reais • Proof: R$10.032,66</div>
+  </div>
+
+  <!-- Modal viewer for screenshots -->
+  <div class="modal" id="modal">
+    <div class="box" role="dialog" aria-modal="true">
+      <button id="closeModal" style="position:absolute;right:28px;top:28px;z-index:220;background:transparent;border:none;color:#fff;font-size:22px">✕</button>
+      <img src="" alt="Screenshot grande" id="modalImg">
+    </div>
+  </div>
+
   <script>
-    // Smooth scroll for anchor links
+    // Smooth anchor scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',e=>{
-        e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el){
-          const offset = 70; // header height
-          const top = el.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({top,behavior:'smooth'});
-        }
+        e.preventDefault(); const id=a.getAttribute('href').slice(1); const el=document.getElementById(id); if(el){const top=el.getBoundingClientRect().top+window.scrollY-70; window.scrollTo({top,behavior:'smooth'});} else if(a.target==='_blank'){window.open(a.href,'_blank')}
       })
     })
 
-    // Fade-in on scroll (vanilla)
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      })
-    },{threshold:0.12})
+    // Fade-in sections
+    const sections = document.querySelectorAll('main section, main > section');
+    const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity=1; e.target.style.transform='none'; io.unobserve(e.target)}})},{threshold:0.12});
+    sections.forEach(s=>{s.style.opacity=0; s.style.transform='translateY(18px)'; s.style.transition='all 0.6s cubic-bezier(.2,.9,.2,1)'; io.observe(s)});
 
-    document.querySelectorAll('section').forEach(s=>{
-      s.style.opacity = 0; s.style.transform = 'translateY(18px)'; s.style.transition = 'all 0.6s ease';
-      observer.observe(s);
-    })
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const closeModal = document.getElementById('closeModal');
+    function openModal(src){modal.classList.add('open'); modalImg.src = src}
+    function close(){modal.classList.remove('open'); modalImg.src=''}
+    closeModal.addEventListener('click', close);
+    modal.addEventListener('click',(e)=>{ if(e.target===modal) close(); });
 
-    // Simple testimonial slider logic (auto-rotate)
-    // For a more robust slider consider replacing with a lightweight library
-    (function(){
-      const grid = document.querySelector('.test-grid');
-      if(!grid) return;
-      let idx=0; const cards = Array.from(grid.children);
-      function rotate(){
-        idx = (idx+1)%cards.length;
-        cards.forEach((c,i)=>{c.style.opacity = (i===idx?1:0.4);c.style.transform = (i===idx? 'scale(1.02)':'scale(1)')})
-      }
-      setInterval(rotate,3500);
-    })();
-
-    // Mobile nav toggle could be added here if desired
-  </script>
-
-</body>
-</html>
+    // Open main screenshot
+    document.getElementById('openModalMain').addEventListener('click', ()=>{
+      const src = document.querySelector('#mainTest .screenshot img').src; openModal
