@@ -1,139 +1,347 @@
-<!-- KENLUXURY - Landing Page Única (index.html) -->
-<!-- Substitua as imagens marcadas com IMG_PLACEHOLDER_* pelas reais -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KENLUXURY - Método Validado</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
-    body { background:#0b0b0d; color:white; line-height:1.5; }
-    h1,h2,h3 { font-weight:700; }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KenLuxury – Clips Virais de Luxo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    .container { width:95%; max-width:1200px; margin:0 auto; }
-    header { padding:40px 0; text-align:center; }
-    header h1 { font-size:2.4rem; margin-bottom:10px; }
-    header p { font-size:1.2rem; opacity:0.8; }
+    <!-- META PIXEL -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
+        t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '000000000000000');
+        fbq('track', 'PageView');
+    </script>
 
-    .cta { display:block; background:#7f4dff; color:white; padding:18px 30px; text-align:center; border-radius:14px; margin:30px auto; width:90%; max-width:380px; font-size:1.2rem; text-decoration:none; font-weight:600; transition:0.2s; }
-    .cta:hover { background:#9a6aff; transform:scale(1.03); }
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #ffffff;
+            color: #000;
+            overflow-x: hidden;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #007bff;
+            z-index: 999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        header .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #007bff;
+            letter-spacing: 1px;
+        }
+        header .cta-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: .3s;
+        }
+        header .cta-btn:hover {
+            background: #005ad1;
+        }
 
-    .section { padding:60px 0; }
-    .section-title { text-align:center; font-size:2rem; margin-bottom:40px; }
+        .hero {
+            margin-top: 120px;
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(#ffffff, #e6f0ff);
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            max-width: 900px;
+            margin: auto;
+            color: #000;
+        }
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 20px auto;
+        }
+        .hero .price {
+            font-size: 34px;
+            font-weight: 800;
+            margin: 20px 0 10px;
+            color: #007bff;
+        }
+        .hero . urgency {
+            font-size: 18px;
+            color: red;
+            font-weight: 700;
+        }
+        .hero .cta-big {
+            background: #007bff;
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: .3s;
+        }
+        .hero .cta-big:hover {
+            background: #005ad1;
+        }
 
-    /* SEÇÃO PROVA SOCIAL V2 */
-    .results-grid { display:grid; grid-template-columns:1fr 330px; gap:40px; align-items:flex-start; }
+        .benefits, .products {
+            padding: 100px 40px;
+            text-align: center;
+        }
+        .benefits h2, .results h2, .products h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 50px;
+        }
 
-    .big-card { background:rgba(255,255,255,0.05); padding:20px; border-radius:18px; backdrop-filter:blur(8px); box-shadow:0 0 20px rgba(0,0,0,0.4); }
-    .big-card img { width:100%; border-radius:14px; }
+        .benefit-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .benefit-box {
+            width: 300px;
+            padding: 30px;
+            background: rgba(255,255,255,0.4);
+            border: 1px solid rgba(0,0,0,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .benefit-box i {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        .benefit-box h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
 
-    .thumbs { display:flex; flex-direction:column; gap:18px; }
-    .thumb { display:flex; gap:12px; background:rgba(255,255,255,0.04); padding:10px; border-radius:12px; cursor:pointer; transition:0.2s; }
-    .thumb:hover { background:rgba(255,255,255,0.15); transform:scale(1.02); }
-    .thumb img { width:60px; height:60px; border-radius:8px; object-fit:cover; }
-    .thumb strong { display:block; font-size:1rem; }
-    .thumb p { font-size:0.85rem; opacity:0.7; margin-top:4px; }
+        .results {
+            padding: 100px 30px;
+            background: #ffffff;
+            border-top: 3px solid #007bff;
+            border-bottom: 3px solid #007bff;
+        }
+        .results-cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .result-card {
+            width: 330px;
+            padding: 30px;
+            border-radius: 16px;
+            background: #f8faff;
+            border: 2px solid #007bff20;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        .result-card strong {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+        }
+        .result-card p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
 
-    /* MODAL */
-    .modal { position:fixed; inset:0; background:rgba(0,0,0,0.75); display:none; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
-    .modal img { max-width:90%; max-height:90%; border-radius:14px; }
+        .products-cards {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .product {
+            width: 330px;
+            padding: 35px;
+            background: #ffffff;
+            border: 2px solid #007bff30;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: .3s;
+        }
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        .product .badge {
+            background: #007bff;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .product h3 {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #000;
+        }
+        .product .price {
+            margin: 15px 0;
+            font-size: 30px;
+            font-weight: 800;
+            color: #007bff;
+        }
+        .product a {
+            display: block;
+            margin-top: 20px;
+            padding: 14px;
+            background: #007bff;
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: .3s;
+        }
+        .product a:hover {
+            background: #005ad1;
+        }
 
-    .proof-bar { position:fixed; bottom:0; left:0; right:0; background:#131318; padding:14px 20px; display:flex; justify-content:center; align-items:center; gap:10px; border-top:1px solid rgba(255,255,255,0.1); font-size:1rem; z-index:999; }
-    .proof-bar span { font-weight:700; color:#7f4dff; }
-
-    @media(max-width:900px){
-      .results-grid { grid-template-columns:1fr; }
-    }
-  </style>
+        footer {
+            padding: 40px;
+            background: #001933;
+            color: #fff;
+            text-align: center;
+            margin-top: 80px;
+        }
+        footer .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
 
-<header class="container">
-  <h1>Método KenLuxury Validado</h1>
-  <p>Aprenda o método que vem gerando resultados reais diariamente.</p>
-  <a class="cta" href="#oferta">QUERO ACESSO AO MÉTODO</a>
+<header>
+    <div class="logo">KenLuxury</div>
+    <a href="#produtos" class="cta-btn">COMPRE AGORA</a>
 </header>
 
-<section class="section container">
-  <h2 class="section-title">Veja os Resultados de Quem Aplicou</h2>
-
-  <div class="results-grid">
-    <!-- CARD GRANDE QUE MUDA DINAMICAMENTE -->
-    <div class="big-card">
-      <img id="main-img" src="IMG_PLACEHOLDER_1" alt="Prova principal" />
-    </div>
-
-    <!-- MINI-CARDS LATERAIS -->
-    <div class="thumbs">
-      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_1')" >
-        <img src="IMG_PLACEHOLDER_1" />
-        <div>
-          <strong>+ R$ 2.347,12</strong>
-          <p>Aluno aplicando há 3 dias</p>
-        </div>
-      </div>
-
-      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_2')" >
-        <img src="IMG_PLACEHOLDER_2" />
-        <div>
-          <strong>+ R$ 5.903,55</strong>
-          <p>Resultado após mentoria</p>
-        </div>
-      </div>
-
-      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_3')" >
-        <img src="IMG_PLACEHOLDER_3" />
-        <div>
-          <strong>+ R$ 1.284,00</strong>
-          <p>Primeiro dia aplicando</p>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="hero">
+    <h1><span style="color:#007bff;">10,000+</span> CLIPES VIRAIS DE LUXO PARA VOCÊ DOMINAR, EXPLODIR SEUS VIEWS E FAZER DINHEIRO!</h1>
+    <p>Clipes virais prontos para elevar seu conteúdo ao nível milionário. Conteúdo PROVEN, EXCLUSIVE e pronto para te deixar RICH.</p>
+    <div class="price">APENAS R$ 49,90</div>
+    <a href="https://pay.sunize.com.br/HSfvhvNX" onclick="fbq('track', 'InitiateCheckout');" class="cta-big">OBTENHA ACESSO IMEDIATO</a>
 </section>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal()">
-  <img id="modal-img" />
-</div>
-
-<section class="section container" id="oferta">
-  <h2 class="section-title">Acesso Completo ao Método</h2>
-  <p style="text-align:center; max-width:700px; margin:0 auto; opacity:0.85; font-size:1.1rem;">
-    Entre agora e receba o passo a passo EXATO usado pelos alunos para replicar os mesmos resultados.
-  </p>
-  <a class="cta" href="https://pagamento.com" target="_blank">GARANTIR ACESSO AGORA</a>
+<section class="benefits">
+    <h2>Por Que Adquirir Os Clipes Virais Luxury</h2>
+    <div class="benefit-boxes">
+        <div class="benefit-box">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>CLIPES VIRAIS</h3>
+            <p>Conteúdos com altíssima retenção, feitos para viralizar INSTANT.</p>
+        </div>
+        <div class="benefit-box">
+            <i class="fa-solid fa-gem"></i>
+            <h3>QUALIDADE PREMIUM</h3>
+            <p>Selecionados profissionalmente para um feed de aparência RICH.</p>
+        </div>
+        <div class="benefit-box">
+            <i class="fa-solid fa-money-bill-wave"></i>
+            <h3>GANHE DINHEIRO</h3>
+            <p>Crie vídeos virais e monetize em dias, totalmente automático.</p>
+        </div>
+    </div>
 </section>
 
-<div class="proof-bar">
-  🔥 Último aluno bateu <span>R$ 10.032,66</span> seguindo o passo a passo
-</div>
+<section class="results">
+    <h2>Veja os resultados de quem aplicou</h2>
+    <div class="results-cards">
+        <div class="result-card">
+            <strong>“Explodi meus views em 1 semana!”</strong>
+            <p>“Comecei com 0 seguidores e usando os clipes do KenLuxury bati 100k em 7 dias. É surreal.”</p>
+        </div>
+        <div class="result-card">
+            <strong>“Monetizei em 3 vídeos.”</strong>
+            <p>“Usei os clipes do pacote viral e meu alcance multiplicou. Em 48h já estava monetizado.”</p>
+        </div>
+        <div class="result-card">
+            <strong>“Automático e lucrativo.”</strong>
+            <p>“Posto sem mostrar o rosto e faço dinheiro todo dia. Melhor compra que já fiz.”</p>
+        </div>
+    </div>
+</section>
+
+<section class="products" id="produtos">
+    <h2>Escolha Seu Pacote Viral</h2>
+    <div class="products-cards">
+
+        <div class="product">
+            <div class="badge">MAIS POPULAR</div>
+            <h3>💎 PACOTE VIRAL – 10,000+ CLIPS</h3>
+            <div class="price">R$ 49,90</div>
+            <a href="https://pay.sunize.com.br/HSfvhvNX" onclick="fbq('track', 'Purchase');">GARANTIR AGORA</a>
+        </div>
+
+        <div class="product">
+            <div class="badge" style="background:#000;">EXCELENTE PARA COMEÇAR</div>
+            <h3>🔥 PACOTE VIRAL – 800+ CLIPS</h3>
+            <div class="price">R$ 19,90</div>
+            <a href="https://pay.sunize.com.br/YZEXgjtB">COMPRAR</a>
+        </div>
+
+        <div class="product">
+            <div class="badge" style="background:#555;">BOM PARA TESTES</div>
+            <h3>⚡ PACOTE – 40+ CLIPS</h3>
+            <div class="price">R$ 5,00</div>
+            <a href="https://pay.sunize.com.br/BXvFzNGr">COMPRAR</a>
+        </div>
+    </div>
+
+    <br><br>
+    <p><b>If you're from a country that doesn't have Pix, buy here 👇</b><br>
+    <a href="https://linktr.ee/Kenluxury">https://linktr.ee/Kenluxury</a></p>
+</section>
+
+<footer>
+    <div class="logo">KenLuxury</div>
+    <p>© 2025 KenLuxury — Todos os direitos reservados.</p>
+</footer>
 
 <script>
-  const mainImg = document.getElementById('main-img');
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-
-  function changeImage(src){
-    mainImg.src = src;
-    mainImg.onclick = () => openModal(src);
-  }
-
-  function openModal(src){
-    modalImg.src = src;
-    modal.style.display = 'flex';
-  }
-
-  function closeModal(){ modal.style.display = 'none'; }
-
-  // Auto-rotator leve
-  const autoImages = ['IMG_PLACEHOLDER_1','IMG_PLACEHOLDER_2','IMG_PLACEHOLDER_3'];
-  let idx = 0;
-  setInterval(() => {
-    idx = (idx + 1) % autoImages.length;
-    changeImage(autoImages[idx]);
-  }, 4500);
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 </script>
 
 </body>
