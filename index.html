@@ -1,339 +1,140 @@
-<!--
-  Kenluxury - Landing page (improved)
-  Single file: index.html (contains HTML, CSS, JS)
-  Improvements: Full redesign of the TESTIMONIALS section with interactive carousel, large proof cards, modal screenshot viewer,
-  sticky proof bar, improved visuals, enhanced animations, accessibility and mobile-first layout.
-
-  Instructions:
-   - Replace placeholder screenshot URLs with the real screenshots you provided.
-   - Replace payment links where indicated.
-   - Host as a static file on Netlify / Vercel / GitHub Pages / Surge.
--->
-
-<!doctype html>
+<!-- KENLUXURY - Landing Page Única (index.html) -->
+<!-- Substitua as imagens marcadas com IMG_PLACEHOLDER_* pelas reais -->
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Kenluxury - Pacotes de clipes luxury/lifestyle para viralizar e monetizar rápido">
-  <title>Kenluxury — Clipes Virais de Luxo</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a2d9b3f6b6.js" crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KENLUXURY - Método Validado</title>
   <style>
-    :root{
-      --royal-blue:#0A3D91;
-      --hover-blue:#2a5cf7;
-      --gold:#F5B84C;
-      --bg:#05060a;
-      --card-bg:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      --glass: rgba(255,255,255,0.04);
-      --muted:rgba(255,255,255,0.65);
-      --transition:0.32s;
-      font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    body { background:#0b0b0d; color:white; line-height:1.5; }
+    h1,h2,h3 { font-weight:700; }
+
+    .container { width:95%; max-width:1200px; margin:0 auto; }
+    header { padding:40px 0; text-align:center; }
+    header h1 { font-size:2.4rem; margin-bottom:10px; }
+    header p { font-size:1.2rem; opacity:0.8; }
+
+    .cta { display:block; background:#7f4dff; color:white; padding:18px 30px; text-align:center; border-radius:14px; margin:30px auto; width:90%; max-width:380px; font-size:1.2rem; text-decoration:none; font-weight:600; transition:0.2s; }
+    .cta:hover { background:#9a6aff; transform:scale(1.03); }
+
+    .section { padding:60px 0; }
+    .section-title { text-align:center; font-size:2rem; margin-bottom:40px; }
+
+    /* SEÇÃO PROVA SOCIAL V2 */
+    .results-grid { display:grid; grid-template-columns:1fr 330px; gap:40px; align-items:flex-start; }
+
+    .big-card { background:rgba(255,255,255,0.05); padding:20px; border-radius:18px; backdrop-filter:blur(8px); box-shadow:0 0 20px rgba(0,0,0,0.4); }
+    .big-card img { width:100%; border-radius:14px; }
+
+    .thumbs { display:flex; flex-direction:column; gap:18px; }
+    .thumb { display:flex; gap:12px; background:rgba(255,255,255,0.04); padding:10px; border-radius:12px; cursor:pointer; transition:0.2s; }
+    .thumb:hover { background:rgba(255,255,255,0.15); transform:scale(1.02); }
+    .thumb img { width:60px; height:60px; border-radius:8px; object-fit:cover; }
+    .thumb strong { display:block; font-size:1rem; }
+    .thumb p { font-size:0.85rem; opacity:0.7; margin-top:4px; }
+
+    /* MODAL */
+    .modal { position:fixed; inset:0; background:rgba(0,0,0,0.75); display:none; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+    .modal img { max-width:90%; max-height:90%; border-radius:14px; }
+
+    .proof-bar { position:fixed; bottom:0; left:0; right:0; background:#131318; padding:14px 20px; display:flex; justify-content:center; align-items:center; gap:10px; border-top:1px solid rgba(255,255,255,0.1); font-size:1rem; z-index:999; }
+    .proof-bar span { font-weight:700; color:#7f4dff; }
+
+    @media(max-width:900px){
+      .results-grid { grid-template-columns:1fr; }
     }
-    *{box-sizing:border-box}
-    body{margin:0;background:radial-gradient(1200px 600px at 10% 5%, rgba(10,61,145,0.06), transparent), linear-gradient(180deg,#02030a 0%, #07080f 100%);color:#fff;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    img{max-width:100%;display:block}
-
-    .container{max-width:1150px;margin:0 auto;padding:20px}
-
-    /* Header */
-    header{position:fixed;left:0;right:0;top:0;z-index:120;background:rgba(6,6,8,0.42);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 22px}
-    .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--royal-blue);font-size:20px}
-    .cta-buy{background:linear-gradient(90deg,var(--royal-blue),var(--hover-blue));padding:10px 16px;border-radius:12px;color:#fff;font-weight:800;box-shadow:0 10px 30px rgba(10,61,145,0.18);transition:transform var(--transition)}
-    .cta-buy:hover{transform:translateY(-4px)}
-
-    .spacer{height:72px}
-
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 480px;gap:28px;align-items:center;padding:48px 0}
-    .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffd27a);color:#081124;font-weight:800}
-    .title{font-size:36px;line-height:1.02;margin:14px 0;font-weight:800}
-    .title .gold{background:linear-gradient(90deg,var(--gold),#ffd27a);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{color:var(--muted);max-width:560px;margin-bottom:18px}
-    .hero-ctas{display:flex;gap:12px;align-items:center}
-
-    .price-pill{display:inline-flex;align-items:baseline;gap:10px;background:rgba(255,255,255,0.03);padding:8px 12px;border-radius:12px;font-weight:800}
-    .price-pill .price{font-size:22px;color:var(--gold)}
-
-    .mockup{border-radius:18px;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 20px 60px rgba(5,8,20,0.7)}
-
-    /* sticky proof bar */
-    .proof-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:linear-gradient(90deg, rgba(10,61,145,0.06), rgba(255,255,255,0.02));padding:10px 16px;border-radius:999px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 50px rgba(0,0,0,0.6);z-index:130}
-    .proof-bar .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 6px 18px rgba(245,184,76,0.18)}
-
-    /* FEATURES */
-    .features{display:flex;gap:18px;margin:28px 0}
-    .feature{flex:1;padding:18px;border-radius:12px;background:var(--card-bg);backdrop-filter:blur(6px);transition:transform var(--transition)}
-    .feature:hover{transform:translateY(-8px)}
-
-    /* TESTIMONIALS - redesigned */
-    .testimonials-wrap{margin:36px 0;background:linear-gradient(180deg,#ffffff 0%, #f7f9ff 100%);color:#03102a;border-radius:18px;padding:22px;border:1px solid rgba(10,61,145,0.06)}
-    .test-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .test-head h3{margin:0}
-    .test-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start}
-
-    /* main testimonial hero card */
-    .main-test{background:linear-gradient(180deg, rgba(10,61,145,0.03), rgba(255,255,255,0.02));border-radius:14px;padding:18px;position:relative;overflow:hidden}
-    .main-test .quote{font-size:20px;font-weight:800;color:#051031;margin-bottom:8px}
-    .main-test .meta{display:flex;align-items:center;gap:10px}
-    .main-test .meta .name{font-weight:800}
-    .main-test .stat{font-size:20px;font-weight:900;color:var(--royal-blue)}
-    .main-test .screenshot{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
-
-    /* side smaller cards / carousel */
-    .side-list{display:flex;flex-direction:column;gap:12px}
-    .mini-card{display:flex;gap:10px;align-items:center;padding:10px;border-radius:12px;background:#fff;border:1px solid rgba(10,61,145,0.04);cursor:pointer;transition:transform var(--transition)}
-    .mini-card:hover{transform:translateY(-6px)}
-    .mini-card img{width:84px;height:64px;object-fit:cover;border-radius:8px}
-    .mini-card .txt{font-size:13px;color:#05102a}
-    .slider-controls{display:flex;gap:8px;align-items:center}
-
-    /* PACKAGES */
-    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    .pkg{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);transition:transform var(--transition)}
-    .pkg:hover{transform:translateY(-10px)}
-
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffd27a);color:#07102a;font-weight:800}
-
-    .intl{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg, rgba(245,184,76,0.06), rgba(255,255,255,0.01));color:var(--gold);font-weight:700}
-
-    /* footer */
-    footer{margin-top:40px;padding:28px;border-top:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:space-between}
-
-    /* modal viewer */
-    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.76);display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.28s}
-    .modal.open{opacity:1;pointer-events:auto}
-    .modal .box{max-width:920px;width:100%;border-radius:12px;overflow:hidden}
-    .modal img{width:100%;height:auto;display:block}
-
-    /* responsive */
-    @media(max-width:1024px){.hero{grid-template-columns:1fr 380px}.test-grid{grid-template-columns:1fr 320px}.packages{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:720px){.nav .nav-links{display:none}.hero{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.packages{grid-template-columns:1fr}.proof-bar{display:none}}
-
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <div class="logo"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="6" fill="url(#g)"/></svg>Kenluxury</div>
-      <div style="display:flex;gap:12px;align-items:center">
-        <nav class="nav-links" style="display:flex;gap:12px">
-          <a href="#benefits">Benefícios</a>
-          <a href="#testimonials">Depoimentos</a>
-          <a href="#packages">Pacotes</a>
-        </nav>
-        <a class="cta-buy" href="#packages">COMPRE AGORA</a>
+<header class="container">
+  <h1>Método KenLuxury Validado</h1>
+  <p>Aprenda o método que vem gerando resultados reais diariamente.</p>
+  <a class="cta" href="#oferta">QUERO ACESSO AO MÉTODO</a>
+</header>
+
+<section class="section container">
+  <h2 class="section-title">Veja os Resultados de Quem Aplicou</h2>
+
+  <div class="results-grid">
+    <!-- CARD GRANDE QUE MUDA DINAMICAMENTE -->
+    <div class="big-card">
+      <img id="main-img" src="IMG_PLACEHOLDER_1" alt="Prova principal" />
+    </div>
+
+    <!-- MINI-CARDS LATERAIS -->
+    <div class="thumbs">
+      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_1')" >
+        <img src="IMG_PLACEHOLDER_1" />
+        <div>
+          <strong>+ R$ 2.347,12</strong>
+          <p>Aluno aplicando há 3 dias</p>
+        </div>
+      </div>
+
+      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_2')" >
+        <img src="IMG_PLACEHOLDER_2" />
+        <div>
+          <strong>+ R$ 5.903,55</strong>
+          <p>Resultado após mentoria</p>
+        </div>
+      </div>
+
+      <div class="thumb" onclick="changeImage('IMG_PLACEHOLDER_3')" >
+        <img src="IMG_PLACEHOLDER_3" />
+        <div>
+          <strong>+ R$ 1.284,00</strong>
+          <p>Primeiro dia aplicando</p>
+        </div>
       </div>
     </div>
-  </header>
-
-  <div class="spacer"></div>
-
-  <main class="container">
-
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <div class="eyebrow">LIMITED TIME — ACT NOW</div>
-        <h1 class="title">💎 <span class="gold">10.000+</span> CLIPS VIRAIS DE LUXO PARA VOCÊ <span style="color:var(--gold)">MAKE MONEY</span></h1>
-        <p class="lead">Domine o mercado com clipes luxury/lifestyle otimizados para retenção e viralização. Conteúdo pronto, estratégia comprovada e resultados rápidos — PROVEN, INSTANT, EXCLUSIVE.</p>
-
-        <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
-          <div class="price-pill"><div class="price">APENAS R$ 49,90</div><div style="font-size:12px;color:var(--muted);margin-left:8px">Preço promocional — <s style="opacity:0.6">R$ 497,00</s></div></div>
-          <div class="hero-ctas">
-            <a class="cta-buy" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank" rel="noopener">OBTENHA ACESSO IMEDIATO</a>
-            <a class="btn-ghost" href="#packages" style="padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--muted);font-weight:700">VER PACOTES</a>
-          </div>
-        </div>
-
-        <div style="margin-top:12px;color:var(--gold);font-weight:800">🔥 ESTE PREÇO WON’T LAST LONG — LIMITED TIME</div>
-      </div>
-
-      <aside class="mockup" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1506619216599-9d16d0905df7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Mockup Kenluxury">
-      </aside>
-    </section>
-
-    <!-- FEATURES -->
-    <section id="benefits" style="margin-top:28px">
-      <div class="features">
-        <div class="feature"><h4>⚡ CLIPES VIRAIS</h4><p>Conteúdo testado para alto engajamento. RESULTADOS INSTANT.</p></div>
-        <div class="feature"><h4>💎 QUALIDADE PREMIUM</h4><p>Imagens, cortes e edição no padrão luxury — prontos para bombar.</p></div>
-        <div class="feature"><h4>💰 GANHE MUITO DINHEIRO</h4><p>Modelos PROVEN para transformar views em receita — MAKE MONEY diariamente.</p></div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS (MAJOR UPGRADE) -->
-    <section id="testimonials" class="testimonials-wrap">
-      <div class="test-head">
-        <div>
-          <h3>Veja Os Resultados De Quem Aplicou</h3>
-          <div style="color:rgba(3,16,42,0.7);margin-top:6px">Depoimentos reais com números e screenshots — inspiração visual e prova social para converter.</div>
-        </div>
-        <div class="slider-controls">
-          <div style="color:rgba(3,16,42,0.7);font-weight:700">Mais de <span style="color:var(--royal-blue)">10.032,66</span> em vendas comprovadas</div>
-        </div>
-      </div>
-
-      <div class="test-grid" style="margin-top:18px">
-        <!-- Main highlight testimonial -->
-        <div class="main-test" id="mainTest">
-          <div class="quote">"Irmao eu consegui — Não consigo acreditar mano, sempre sonhei com isso."</div>
-          <div class="meta"><div class="name">Rodrigo — <span style="font-weight:700;color:var(--muted)">Aluno Kenluxury</span></div><div style="margin-left:auto" class="stat">R$ 10.032,66</div></div>
-          <div class="screenshot" style="margin-top:12px">
-            <!-- Replace this src with your actual screenshot image provided -->
-            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Screenshot Rodrigo - R$10.032,66">
-          </div>
-
-          <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
-            <button class="cta-buy" id="openModalMain">VER PRINT</button>
-            <div style="font-size:13px;color:rgba(3,16,42,0.7)">Prova visual com vendas e conversões.</div>
-          </div>
-        </div>
-
-        <!-- Right side mini cards (list / carousel) -->
-        <div class="side-list" id="miniList">
-          <!-- Mini 1 -->
-          <div class="mini-card" data-src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Diego — R$3.233,45">
-            <div class="txt"><div style="font-weight:800">Diego Novais (Aluno)</div><div style="font-size:13px;color:#05102a">R$ 3.233,45 • 248 vendas</div></div>
-          </div>
-
-          <!-- Mini 2 -->
-          <div class="mini-card" data-src="https://images.unsplash.com/photo-1517817748493-1f9a7a6a2f43?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
-            <img src="https://images.unsplash.com/photo-1517817748493-1f9a7a6a2f43?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Anthony — R$1.110,45">
-            <div class="txt"><div style="font-weight:800">Anthony RD (Aluno ASD)</div><div style="font-size:13px;color:#05102a">R$ 1.110,45 • Primeira conquista</div></div>
-          </div>
-
-          <!-- Mini 3 (mock) -->
-          <div class="mini-card" data-src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder">
-            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Outro Aluno">
-            <div class="txt"><div style="font-weight:800">Diego M.</div><div style="font-size:13px;color:#05102a">3k em menos de 30 dias</div></div>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-
-    <!-- PACKAGES -->
-    <section id="packages">
-      <h3 style="margin-top:20px">Escolha o seu pacote de Clipes Virais</h3>
-      <div class="packages">
-
-        <div class="pkg">
-          <div class="badge">MAIS POPULAR</div>
-          <h4 style="margin-top:12px">💎 PACOTE VIRAL – 10.000+ CLIPS</h4>
-          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 49,90</div>
-          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
-            <li>10.000+ clipes premium prontos para publicar</li>
-            <li>Atualizações semanais + categorias exclusivas</li>
-            <li>Templates de copy e ideias de postagem</li>
-          </ul>
-          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/HSfvhvNX" target="_blank">GARANTIR AGORA</a></div>
-        </div>
-
-        <div class="pkg">
-          <div class="badge">EXCELENTE PARA COMEÇAR</div>
-          <h4 style="margin-top:12px">🔥 PACOTE VIRAL – 800+ CLIPS</h4>
-          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 19,90</div>
-          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
-            <li>Seleção otimizada para testes</li>
-            <li>Foco em formatos curtos e virais</li>
-          </ul>
-          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/YZEXgjtB" target="_blank">GARANTIR AGORA</a></div>
-        </div>
-
-        <div class="pkg">
-          <div class="badge">BOM PARA TESTES</div>
-          <h4 style="margin-top:12px">⚡ PACOTE DE INÍCIO – 40+ CLIPS</h4>
-          <div style="font-size:18px;font-weight:900;margin-top:6px">R$ 5,00</div>
-          <ul style="margin-top:10px;color:var(--muted);padding-left:18px">
-            <li>Pacote pequeno para experimentação</li>
-            <li>Ideal para quem quer testar estratégias</li>
-          </ul>
-          <div style="margin-top:12px"><a class="cta-buy" href="https://pay.sunize.com.br/BXvFzNGr" target="_blank">GARANTIR AGORA</a></div>
-        </div>
-      </div>
-
-      <div class="intl">If you're from a country that doesn't have Pix, buy here. 👇<br>https://linktr.ee/Kenluxury</div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section style="margin-top:24px">
-      <h3>Como funciona (3 passos)</h3>
-      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
-        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">1. Escolha o pacote</div>
-        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">2. Baixe os clipes</div>
-        <div style="flex:1;min-width:200px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px">3. Publique e monetize — EXPLODE YOUR VIEWS</div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" style="margin-top:24px">
-      <h3>FAQ</h3>
-      <details style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:10px"><summary style="font-weight:800">Os clipes são licenciados?</summary><div style="margin-top:8px;color:var(--muted)">Você recebe direito de uso comercial para postar e monetizar. Consulte a política completa na seção de termos.</div></details>
-      <details style="background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;margin-top:10px"><summary style="font-weight:800">Formas de pagamento?</summary><div style="margin-top:8px;color:var(--muted)">Pix (Brasil) e links internacionais via Linktree. Se não tiver Pix, use o link em inglês na seção de pacotes.</div></details>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <div style="display:flex;gap:12px;align-items:center">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="1" y="1" width="22" height="22" rx="6" fill="#0A3D91"/></svg>
-        <div>
-          <div style="font-weight:800">Kenluxury</div>
-          <div style="font-size:13px;color:var(--muted)">© 2025 Kenluxury — Todos os direitos reservados.</div>
-        </div>
-      </div>
-      <div style="color:var(--muted)">Desenvolvido para conversão • <a href="#packages">Comprar agora</a></div>
-    </footer>
-
-  </main>
-
-  <!-- sticky proof bar -->
-  <div class="proof-bar" role="status" aria-live="polite">
-    <div class="dot" aria-hidden="true"></div>
-    <div style="font-weight:800">Alunos comprovados • Resultados reais • Proof: R$10.032,66</div>
   </div>
+</section>
 
-  <!-- Modal viewer for screenshots -->
-  <div class="modal" id="modal">
-    <div class="box" role="dialog" aria-modal="true">
-      <button id="closeModal" style="position:absolute;right:28px;top:28px;z-index:220;background:transparent;border:none;color:#fff;font-size:22px">✕</button>
-      <img src="" alt="Screenshot grande" id="modalImg">
-    </div>
-  </div>
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="closeModal()">
+  <img id="modal-img" />
+</div>
 
-  <script>
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',e=>{
-        e.preventDefault(); const id=a.getAttribute('href').slice(1); const el=document.getElementById(id); if(el){const top=el.getBoundingClientRect().top+window.scrollY-70; window.scrollTo({top,behavior:'smooth'});} else if(a.target==='_blank'){window.open(a.href,'_blank')}
-      })
-    })
+<section class="section container" id="oferta">
+  <h2 class="section-title">Acesso Completo ao Método</h2>
+  <p style="text-align:center; max-width:700px; margin:0 auto; opacity:0.85; font-size:1.1rem;">
+    Entre agora e receba o passo a passo EXATO usado pelos alunos para replicar os mesmos resultados.
+  </p>
+  <a class="cta" href="https://pagamento.com" target="_blank">GARANTIR ACESSO AGORA</a>
+</section>
 
-    // Fade-in sections
-    const sections = document.querySelectorAll('main section, main > section');
-    const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity=1; e.target.style.transform='none'; io.unobserve(e.target)}})},{threshold:0.12});
-    sections.forEach(s=>{s.style.opacity=0; s.style.transform='translateY(18px)'; s.style.transition='all 0.6s cubic-bezier(.2,.9,.2,1)'; io.observe(s)});
+<div class="proof-bar">
+  🔥 Último aluno bateu <span>R$ 10.032,66</span> seguindo o passo a passo
+</div>
 
-    // Modal logic
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modalImg');
-    const closeModal = document.getElementById('closeModal');
-    function openModal(src){modal.classList.add('open'); modalImg.src = src}
-    function close(){modal.classList.remove('open'); modalImg.src=''}
-    closeModal.addEventListener('click', close);
-    modal.addEventListener('click',(e)=>{ if(e.target===modal) close(); });
+<script>
+  const mainImg = document.getElementById('main-img');
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
 
-    // Open main screenshot
-    document.getElementById('openModalMain').addEventListener('click', ()=>{
-      const src = document.querySelector('#mainTest .screenshot img').src; openModal
+  function changeImage(src){
+    mainImg.src = src;
+    mainImg.onclick = () => openModal(src);
+  }
+
+  function openModal(src){
+    modalImg.src = src;
+    modal.style.display = 'flex';
+  }
+
+  function closeModal(){ modal.style.display = 'none'; }
+
+  // Auto-rotator leve
+  const autoImages = ['IMG_PLACEHOLDER_1','IMG_PLACEHOLDER_2','IMG_PLACEHOLDER_3'];
+  let idx = 0;
+  setInterval(() => {
+    idx = (idx + 1) % autoImages.length;
+    changeImage(autoImages[idx]);
+  }, 4500);
+</script>
+
+</body>
+</html>
